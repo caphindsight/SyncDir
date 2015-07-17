@@ -1,4 +1,5 @@
 module MiscUtils (
+    flatten,
     startsWith,
     fsAllowedName,
     Color(..), ColorIntensity(..),
@@ -7,6 +8,9 @@ module MiscUtils (
 
 import System.Console.ANSI
 import System.IO (hFlush, stdout)
+
+flatten :: [[a]] -> [a]
+flatten = foldl (++) []
 
 startsWith :: Ord a => [a] -> [a] -> Bool
 startsWith x y = let [n, m] = map length [x, y] in m >= n && take n y == x

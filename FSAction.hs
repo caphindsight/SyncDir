@@ -15,8 +15,9 @@ data FSActionType = FSActionType_AddFile
                   | FSActionType_DeleteDir
                   | FSActionType_EnterDir
                   | FSActionType_LeaveDir
+                  deriving (Show)
 
-data FSAction = FSAction FSActionType FilePath
+data FSAction = FSAction FSActionType FilePath deriving (Show)
 
 putFSAction :: FSAction -> IO ()
 putFSAction (FSAction ty f) =
