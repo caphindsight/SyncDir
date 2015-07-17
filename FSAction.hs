@@ -25,11 +25,11 @@ putFSAction (FSAction ty f) =
         FSActionType_AddFile    -> putColoredStrLn (Dull, Green)  $ " +  " ++ f
         FSActionType_ModifyFile -> putColoredStrLn (Dull, Yellow) $ " *  " ++ f
         FSActionType_DeleteFile -> putColoredStrLn (Dull, Red)    $ " -  " ++ f
-        FSActionType_SkipFile   -> putStrLn                       $ "    " ++ f
+        FSActionType_SkipFile   -> return () -- putStrLn                       $ "    " ++ f
         FSActionType_AddDir     -> putColoredStrLn (Vivid, Green) $ "[+] " ++ f
         FSActionType_DeleteDir  -> putColoredStrLn (Vivid, Red)   $ "[-] " ++ f
-        FSActionType_EnterDir   -> putColoredStrLn (Vivid, White) $ ">>> " ++ f
-        FSActionType_LeaveDir   -> putColoredStrLn (Vivid, White) $ "<<< " ++ f
+        FSActionType_EnterDir   -> return () -- putColoredStrLn (Vivid, White) $ ">>> " ++ f
+        FSActionType_LeaveDir   -> return () -- putColoredStrLn (Vivid, White) $ "<<< " ++ f
 
 performFSAction :: (FilePath, FilePath) -> FSAction -> IO ()
 performFSAction (sourceRoot, targetRoot) (FSAction ty path) =
