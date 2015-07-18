@@ -17,13 +17,13 @@ configFile = do
     return $ homeDir </> ".sync_dir_config"
 
 data ConfigEntry = ConfigEntry_Sync {
-    configEntry_Sync_sourcePath :: FilePath,
-    configEntry_Sync_targetPath :: FilePath,
-    configEntry_Sync_enabled    :: Bool
+    configEntry_Sync_sourcePath :: !FilePath,
+    configEntry_Sync_targetPath :: !FilePath,
+    configEntry_Sync_enabled    :: !Bool
 } deriving (Show, Read)
 
 data Config = Config {
-    config_entries :: [ConfigEntry]
+    config_entries :: ![ConfigEntry]
 } deriving (Show, Read)
 
 readConfig :: IO Config
